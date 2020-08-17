@@ -29,8 +29,9 @@ aside {
     padding: 10px;
 }
 
-.cityName {
+.currentWeather h1 {
     text-align: left;
+    margin: 30px;
 }
 
 .cityInput, .history {
@@ -40,6 +41,11 @@ aside {
 .currentWeather, .forecast {
     border-radius: 8px;
     border: 1px solid grey;
+}
+
+.currentWeather p {
+    margin-left: 30px;
+    font-size: 18px;
 }
 
 

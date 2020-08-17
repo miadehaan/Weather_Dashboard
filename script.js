@@ -6,7 +6,8 @@ $(document).ready(function() {
 
     // Weather data
     var cityName;
-    var temp;
+    var country;
+    var tempF;
     var humidity;
     var windspeed;
     var uvIndex;
@@ -17,7 +18,6 @@ $(document).ready(function() {
     $(".citySubmit").on("click", function(event){
         event.preventDefault();
         cityInput = $(".cityInput").val().trim();
-        console.log(cityInput);
 
 
         // var apiKey = "e68a6c498567148d8870611b117efac1";
@@ -31,37 +31,39 @@ $(document).ready(function() {
             console.log(response);
             
             cityName = response.name;
+            country = response.sys.country;
             // date = response;
-            temp = response.main.temp; // in Kelvin
+            var tempKelvin = response.main.temp; // in Kelvin
+            tempF = parseFloat(((tempKelvin-273.15)*1.8)+32).toFixed(2);
             humidity = response.main.humidity;
             windspeed = response.wind.speed;
             // uvIndex = response;
+
+            current();
+            future();
         }); 
-
-
-        // Add to history and pull info from localStorage
-        localStorage.setItem("city", cityInput);
-        var history = $("<div>").text( localStorage.getItem(localStorage.key(0)) );
-        history.attr("border: 1px solid");
-        $(".history").append(history);
-        console.log(localStorage.getItem(localStorage.key(0) ));
-
-        current();
-        future();
-
         
     });
 
     function current() {
         // Add city Name to top section (".currentWeather")
+
+        // Add to history and pull info from localStorage
+        localStorage.setItem("city", cityName);
+        var history = $("<div>").text( localStorage.getItem(localStorage.key(0)) );
+        history.attr("border: 1px solid");
+        $(".history").append(history);
+        console.log(localStorage.getItem(localStorage.key(0) ));
+
+
         // Pull this data from API (or localStorage?)
 
-        // $(".cityName").html(cityName + ", " + response.sys.country);
-        // $(".date").text(date);
-        // $(".temp").text(temp);
-        // $(".humidity").text(humidity);
-        // $(".windSpeed").text(windspeed);
-        // $(".uvIndex").text(uvIndex);
+        $("#cityName").html(cityName + ", " + country);
+        $("#date").text(date);
+        $("#temp").text("Temperature: " + tempF + " F");
+        $("#humidity").text("Humidity: " + humidity);
+        $("#windSpeed").text("Wind Speed: " + windspeed);
+        $("#uvIndex").text("UV Index: " + uvIndex);
         
     }
 
