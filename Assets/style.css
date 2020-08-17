@@ -1,24 +1,57 @@
 body {
     font-family: 'Nanum Myeongjo', serif;
-    font-size: 20px;
+    font-size: 18px;
     padding-bottom: 100px;
 }
 
-header {
+.container {
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+}
 
+header {
+    text-align: center;
 }
 
 /* Body */
+main {
+    height: auto;
+    /* border: 1px solid red; */
+}
+
+aside {
+    border-radius: 8px;
+}
+
+.searchHeader {
+    text-align: center;
+    padding: 10px;
+}
+
+.cityName {
+    text-align: left;
+}
+
+.cityInput, .history {
+    padding: 20px;
+}
+
+.currentWeather, .forecast {
+    border-radius: 8px;
+    border: 1px solid grey;
+}
+
+
 
 
 
 /* Footer */
 footer {
     width: 100%;
+    height: 50px;
     text-align: center;
-    height: 80px;
-    position: fixed;
+    position: fixed;   
     bottom: 0;
-    left: 0;
-    border-top: 1px solid black;
- }
+ 
+}

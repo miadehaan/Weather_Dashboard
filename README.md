@@ -9,6 +9,11 @@ Instructions:
 
 Code: 
 
+This code utilizes JavaScript, jQuery, and the use of server-side API's to retrieve data. For this application, I use the OpenWeather API to access weather information for different cities (link shown below).
+
+This page was also styled using Bootstrap. 
+
+[OpenWeather API](https://openweathermap.org/api)
 
 # Links 
 
