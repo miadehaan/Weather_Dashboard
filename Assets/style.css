@@ -27,11 +27,13 @@ aside {
 .searchHeader {
     text-align: center;
     padding: 10px;
+    font-weight: 600;
 }
 
 .currentWeather h1 {
-    text-align: left;
     margin: 30px;
+    text-align: left;
+    font-weight: 600;
 }
 
 .cityInput, .history {
@@ -39,13 +41,30 @@ aside {
 }
 
 .currentWeather, .forecast {
+    margin-bottom: 30px;
     border-radius: 8px;
     border: 1px solid grey;
 }
 
 .currentWeather p {
-    margin-left: 30px;
+    margin-left: 75px;
     font-size: 18px;
+}
+
+.forecast h5 { 
+    margin: 30px;
+    font-weight: 600;
+    text-align: left;
+   
+}
+
+.forecast {
+    margin: 12px;
+    height: auto;
+    font-size: 15px;
+    background-color: rgb(174, 226, 250);
+    border: 1px solid grey;
+    border-radius: 8px; 
 }
 
 

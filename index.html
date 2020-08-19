@@ -32,29 +32,37 @@
             <aside class="input-group mb-3 col-lg-3 fixed bg-light">
                 <div class="row">
                     <h5 class="searchHeader col-12">Search for a city</h5>
-                    <input type="text" class="cityInput form-control col-10" placeholder="Enter city" aria-label="Enter city" aria-describedby="button-addon">
+                    <input type="text" class="cityInput form-control col-8" placeholder="Enter city" aria-label="Enter city" aria-describedby="button-addon">
                     <div class="input-group-append">
                         <button class="citySubmit btn btn-outline-secondary" type="button" id="button-addon2"><i class="fas fa-search"></i></button>
                     </div>
 
-                    <div class="history">
+                    <div class="history col-12">
                     <!-- Search History by city goes here -->
                     </div>
                 </div>
             </aside>
 
+            <!-- Show the city weather conditons -->
             <section class="col-lg-9 scrollit">
                 <div class="currentWeather">
-                    <h1><span id="cityName"></span>  <span class="date"></span></h1>
+                    <h1><span id="cityName"></span>  <span class="date"></span> <img class="weatherIcon"></img></h1>
                     <p id ="temp"></p>
                     <p id ="humidity"></p>
                     <p id ="windSpeed"></p>
                     <p id ="uvIndex"></p>
-                    <!-- Show the city weather conditons -->
                 </div>
 
-                <div class="forecast">
-                    <!-- show the city 5-day forecast -->
+                <!-- show the city 5-day forecast -->
+                <div class="allforecast">
+                    <h5>5-day Weather Forecast</h5>
+                    <div class="row">
+                        <div id="0" class="forecast col-md-2"> </div>
+                        <div id="1" class="forecast col-md-2"> </div>
+                        <div id="2" class="forecast col-md-2"> </div>
+                        <div id="3" class="forecast col-md-2"> </div>
+                        <div id="4" class="forecast col-md-2"> </div> 
+                    </div>
                 </div>
             </section>
         
