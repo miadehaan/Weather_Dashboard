@@ -41,12 +41,14 @@ $(document).ready(function() {
             cityName = localStorage.getItem("city");
             country = response.sys.country;
             date = response.dt; //Time of data calculation, unix, UTC
+            // convert dt to actual date:
+            
             lon = response.coord.lon;
             lat = response.coord.lat;
 
             
             // Second/Main AJAX Call to get weather data
-            var queryURL = "https://api.openweathermap.org/data/2.5/onecall?lat=" + lat + "&lon=" + lon + "&exclude=hourly,minutely&appid=e68a6c498567148d8870611b117efac1";
+            var queryURL = "https://api.openweathermap.org/data/2.5/onecall?lat=" + lat + "&lon=" + lon + "&exclude=hourly,minutely&appid=e68a6c498567148d8870611b117efac1&units=imperial";
             //https://api.openweathermap.org/data/2.5/onecall?lat={lat}&lon={lon}&exclude=daily&appid=e68a6c498567148d8870611b117efac1&units=imperial
 
             $.ajax({
@@ -58,15 +60,26 @@ $(document).ready(function() {
                 // Get current weather data
                 temp = response.current.temp; 
                 humidity = response.current.humidity;
-                windspeed = response.current.speed;
+                windspeed = response.current.wind_speed;
                 uvIndex = response.current.uvi;
                 currentIcon = response.current.weather[0].icon;
                 
                 // Get data for 5-day forecast
-                for (var i=0; i < response.daily.length; i++) {
+                for (var i=0; i < 5; i++) {
                     dailyTemp = response.daily[i].temp.day;
                     dailyHumidity = response.daily[i].humidity;
 
+                    console.log(dailyTemp);
+                    console.log(dailyHumidity);
+
+                    // If id is = to i
+                    if ( $(".forecast").attr("id") === i ) {
+                        console.log("Day: " + i);
+
+                        // Add data to corresponding day 
+                        $("#0").append( $("<div>").text("Temp: " + dailyTemp + "F") );
+                        $("#0").append( $("<div>").text("Humidity: " + dailyHumidity + "%") );
+                    }
 
   
                 }
@@ -115,8 +128,7 @@ $(document).ready(function() {
         // $("<div>").text("Temperature: " + temp + " F");
         // $("<div>").text("Humidity: " + humidity + " %");
 
-        $("#0").append( $("<div>").text("Temp: " + temp + "F") );
-        $("#0").append( $("<div>").text("Humidity: " + humidity + "%") );
+
 
     }
     
