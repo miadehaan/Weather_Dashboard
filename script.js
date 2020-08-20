@@ -3,6 +3,7 @@ $(document).ready(function() {
     // Search parameters
     var cityInput;
     var date;
+    var allCities = [];
 
     // Weather data
     var cityName;
@@ -28,6 +29,7 @@ $(document).ready(function() {
 
         // Get the city the user input
         cityInput = $(".cityInput").val().trim();
+        allCities.push(cityInput); //adds to array
 
         var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + cityInput + "&appid="+ apiKey + "&units=imperial";
         // First AJAX call to get lat/lon coordinates based on city input
@@ -37,12 +39,12 @@ $(document).ready(function() {
         }).then(function(response) {
             // console.log(response);
             
-            localStorage.setItem("city", response.name);
-            cityName = localStorage.getItem("city");
+            localStorage.setItem("city", allCities);
+            cityName = response.name;
             country = response.sys.country;
             date = response.dt; //Time of data calculation, unix, UTC
             // convert dt to actual date:
-            
+
             lon = response.coord.lon;
             lat = response.coord.lat;
 
@@ -69,18 +71,45 @@ $(document).ready(function() {
                     dailyTemp = response.daily[i].temp.day;
                     dailyHumidity = response.daily[i].humidity;
 
-                    console.log(dailyTemp);
-                    console.log(dailyHumidity);
+                    // console.log(dailyTemp);
+                    // console.log(dailyHumidity);
 
-                    // If id is = to i
-                    if ( $(".forecast").attr("id") === i ) {
-                        console.log("Day: " + i);
+                    // Switch statement
+                    switch (i) {
+                        case 0:
+                            $("#0").append( $("<div>").text("Temp: " + dailyTemp + "F") );
+                            $("#0").append( $("<div>").text("Humidity: " + dailyHumidity + "%") );
+                            break;
 
-                        // Add data to corresponding day 
-                        $("#0").append( $("<div>").text("Temp: " + dailyTemp + "F") );
-                        $("#0").append( $("<div>").text("Humidity: " + dailyHumidity + "%") );
+                        case 1:
+                            $("#1").append( $("<div>").text("Temp: " + dailyTemp + "F") );
+                            $("#1").append( $("<div>").text("Humidity: " + dailyHumidity + "%") );
+                            break;
+
+                        case 2:
+                            $("#2").append( $("<div>").text("Temp: " + dailyTemp + "F") );
+                            $("#2").append( $("<div>").text("Humidity: " + dailyHumidity + "%") );
+                            break;
+
+                        case 3:
+                            $("#3").append( $("<div>").text("Temp: " + dailyTemp + "F") );
+                            $("#3").append( $("<div>").text("Humidity: " + dailyHumidity + "%") );
+                            break;                           
+                            
+                        case 4:
+                            $("#4").append( $("<div>").text("Temp: " + dailyTemp + "F") );
+                            $("#4").append( $("<div>").text("Humidity: " + dailyHumidity + "%") );
+                            break; 
                     }
-
+                    
+                    // If id is = to i
+                    // if ( parseInt($(".forecast").attr("id")) === i ) {
+                    //     console.log("Day: " + i);
+                    //     console.log($(this) );
+                    //     // Add data to corresponding day 
+                    //     $("#0").append( $("<div>").text("Temp: " + dailyTemp + "F") );
+                    //     $("#0").append( $("<div>").text("Humidity: " + dailyHumidity + "%") );
+                    // }
   
                 }
 
@@ -110,12 +139,29 @@ $(document).ready(function() {
         
         
         // Display the search history and pull info from localStorage
-        var history = $("<div>").text( localStorage.getItem("city") );
-        history.attr("border: 1px solid");
-        $(".history").append(history);
+        var history = JSON.parse(localStorage.getItem("city") ); 
+        // history.concat(localStorage.getItem("city")) ;
+        console.log(history); 
+
+        // for (var i=0; i < history.length; i++) {
+        //     console.log(history[i]);
+        //     var historyBtn = $("<button>").addClass("historyBtn");
+        //     historyBtn.text(history[i]);
+        //     $(".history").append(historyBtn);
+
+        // }
+        // history.attr("border: 1px solid"); // add to css class
+
+        $(history).each( (index, element) => {
+            console.log(index);
+            var historyBtn = $("<button>").addClass("historyBtn");
+            historyBtn.text(element);
+            $(".history").append(historyBtn);
+        });
+
+
         
-        // console.log(localStorage.getItem(localStorage.key(0) ));
-        
+    
 
     }
 
