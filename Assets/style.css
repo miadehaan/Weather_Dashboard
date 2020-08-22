@@ -22,6 +22,8 @@ main {
 
 aside {
     border-radius: 8px;
+    display: block;
+    /* text-align: center; */
 }
 
 .searchHeader {
@@ -30,19 +32,56 @@ aside {
     font-weight: 600;
 }
 
+
+.currentWeather {
+    height: 350px;
+}
+
 .currentWeather h1 {
     margin: 30px;
     text-align: left;
     font-weight: 600;
 }
 
+.date {
+    font-size: large;
+}
+
+.uvGreen {
+    background-color: green;
+}
+.uvYellow {
+    background-color: yellow;
+}
+.uvRed {
+    background-color: red;
+}
+
+.weatherIcon {
+    text-align: right;
+}
+
 .cityInput, .history {
     padding: 20px;
 }
 
+.historyList {
+    margin-top: 20px;
+}
+.historyBtn {
+    width: 70%;
+    background-color: transparent;
+    border-radius: 8px;
+    border: 0.5px solid grey;
+}
+
+
 .currentWeather, .forecast {
     margin-bottom: 30px;
     border-radius: 8px;
+}
+
+.currentWeather {
     border: 1px solid grey;
 }
 
@@ -57,16 +96,20 @@ aside {
     text-align: left;
    
 }
+.forecastDate {
+    font-size: 20px;
+    font-weight: 500px;
+}
 
 .forecast {
     margin: 12px;
     height: auto;
     font-size: 15px;
+    text-align: center;
     background-color: rgb(174, 226, 250);
-    border: 1px solid grey;
+    /* border: 1px solid grey; */
     border-radius: 8px; 
 }
-
 
 
 
