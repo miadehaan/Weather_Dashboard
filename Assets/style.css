@@ -23,7 +23,6 @@ main {
 aside {
     border-radius: 8px;
     display: block;
-    /* text-align: center; */
 }
 
 .searchHeader {
@@ -34,7 +33,7 @@ aside {
 
 
 .currentWeather {
-    height: 350px;
+    height: 400px;
 }
 
 .currentWeather h1 {
