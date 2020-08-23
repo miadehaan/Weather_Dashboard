@@ -12,7 +12,7 @@ Code:
 
 This code utilizes JavaScript, jQuery, and the use of server-side APIs to retrieve data. For this application, I used the OpenWeather API to access weather information for different cities ([OpenWeather API](https://openweathermap.org/api)). This page was also styled using Bootstrap. 
 
-![Demo1](Assets.demo1.PNG)
+![Demo1](./Assets.demo1.PNG)
 
 ![Demo2](./Assets.demo2.PNG)
 
