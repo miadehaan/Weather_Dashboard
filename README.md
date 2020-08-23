@@ -16,7 +16,7 @@ This code utilizes JavaScript, jQuery, and the use of server-side APIs to retrie
 
 # Links 
 
-![Demo1](./Assets.demo1.PNG)
+![Demo1](Assets.demo1.PNG)
 
 ![Demo2](./Assets.demo2.PNG)
 
