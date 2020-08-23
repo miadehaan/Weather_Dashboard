@@ -19,6 +19,9 @@ var lon;
     
 
 $(document).ready(function() {
+    // Show latest city from local storage when page is refreshed
+    current(history[history.length-1] );
+
     // Retrieve the city input by the user
     $(".citySubmit").on("click", function(event){
         event.preventDefault();
@@ -122,21 +125,21 @@ function future(city) {
         // console.log(response);
 
         // get UV index
-        uvIndex = response.current.uvi;
-        $("#uvIndex").text("UV Index: ");
-        $(".uvValue").text(uvIndex);
+        let uvIndex = response.current.uvi;
+        console.log(uvIndex);
+        $("#uvIndex").text("UV Index: " + uvIndex);
         
         if(uvIndex < 3) {
-            $(".uvValue").addClass("uvGreen");
+            $("#uvIndex").addClass("uvGreen");
         } else if(uvIndex >= 3 && uvIndex < 7){
-            $(".uvValue").addClass("uvYellow");
+            $("#uvIndex").addClass("uvYellow");
         } else {
-            $(".uvValue").addClass("uvRed");
+            $("#uvIndex").addClass("uvRed");
         }
                 
         $(".forecast").empty();
         // Get data for 5-day forecast
-        for (var i=0; i < 5; i++) {
+        for (var i=1; i < 6; i++) {
             let day = response.daily[i].dt; // ( date of forecast )
             let dailyTemp = response.daily[i].temp.day;
             let dailyHumidity = response.daily[i].humidity;
@@ -145,13 +148,6 @@ function future(city) {
 
             // Switch statement
             switch (i) {
-                case 0:
-                    $("#0").append( $("<div>").addClass("forecastDate").text(unixTimestamp(day)) );
-                    $("#0").append( $("<img>").attr("src", iconURL) );
-                    $("#0").append( $("<div>").text("Temp: " + dailyTemp + "F") );
-                    $("#0").append( $("<div>").text("Humidity: " + dailyHumidity + "%") );
-                    break;
-
                 case 1:
                     $("#1").append( $("<div>").addClass("forecastDate").text(unixTimestamp(day)) );
                     $("#1").append( $("<img>").attr("src", iconURL) );
@@ -171,13 +167,20 @@ function future(city) {
                     $("#3").append( $("<img>").attr("src", iconURL) );
                     $("#3").append( $("<div>").text("Temp: " + dailyTemp + "F") );
                     $("#3").append( $("<div>").text("Humidity: " + dailyHumidity + "%") );
-                    break;                           
-                    
+                    break;
+
                 case 4:
                     $("#4").append( $("<div>").addClass("forecastDate").text(unixTimestamp(day)) );
                     $("#4").append( $("<img>").attr("src", iconURL) );
                     $("#4").append( $("<div>").text("Temp: " + dailyTemp + "F") );
                     $("#4").append( $("<div>").text("Humidity: " + dailyHumidity + "%") );
+                    break;                           
+                    
+                case 5:
+                    $("#5").append( $("<div>").addClass("forecastDate").text(unixTimestamp(day)) );
+                    $("#5").append( $("<img>").attr("src", iconURL) );
+                    $("#5").append( $("<div>").text("Temp: " + dailyTemp + "F") );
+                    $("#5").append( $("<div>").text("Humidity: " + dailyHumidity + "%") );
                     break; 
             }
         }    

@@ -48,12 +48,15 @@ aside {
 }
 
 .uvGreen {
+    width: 150px;
     background-color: green;
 }
 .uvYellow {
+    width: 150px;
     background-color: yellow;
 }
 .uvRed {
+    width: 150px;
     background-color: red;
 }
 
@@ -69,7 +72,7 @@ aside {
     margin-top: 20px;
 }
 .historyBtn {
-    width: 70%;
+    width: 100%;
     background-color: transparent;
     border-radius: 8px;
     border: 0.5px solid grey;

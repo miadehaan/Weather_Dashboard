@@ -32,7 +32,7 @@
                 <div class="row">
                     <h5 class="searchHeader col-12">Search for a city</h5>
 
-                    <form id="inputForm">
+                    <form id="inputForm" onSubmit="return false">
                         <input type="text" class="cityInput form-control" placeholder="Enter city" aria-label="Enter city" aria-describedby="button-addon">
                         <div class="input-group-append">
                             <button class="citySubmit btn btn-outline-secondary" type="button"><i class="fas fa-search"></i></button>
@@ -62,11 +62,11 @@
                 <div class="allforecast">
                     <h5>5-day Weather Forecast</h5>
                     <div class="row">
-                        <div id="0" class="forecast col-md-2"> </div>
                         <div id="1" class="forecast col-md-2"> </div>
                         <div id="2" class="forecast col-md-2"> </div>
                         <div id="3" class="forecast col-md-2"> </div>
-                        <div id="4" class="forecast col-md-2"> </div> 
+                        <div id="4" class="forecast col-md-2"> </div>
+                        <div id="5" class="forecast col-md-2"> </div> 
                     </div>
                 </div>
             </section>
